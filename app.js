@@ -19,14 +19,15 @@ app.get( "/", ( req, res ) => {
     res.render("index");
 } );
 
-const read_stuff_all_sql = `
-    SELECT 
-        id, item, quantity
-    FROM
-        stuff
-`
+
 
 // define a route for the stuff inventory page
+const read_stuff_all_sql = `
+    SELECT 
+        *
+    FROM
+        shopping_list
+`
 app.get( "/stuff", ( req, res ) => {
     db.execute(read_stuff_all_sql, (error, results) => {
         if (error) {
@@ -39,9 +40,9 @@ app.get( "/stuff", ( req, res ) => {
 
 const read_item_sql = `
     SELECT 
-        item, quantity, description
+        *
     FROM
-        stuff
+        shopping_list
     WHERE 
         id = ?    
 `
@@ -55,6 +56,7 @@ app.get( "/stuff/item/:id", ( req, res ) => {
         }
         else {
             let data = results[0];
+            console.log(data);
             //data = {item: ____, quantity: ____, description: ____ }
             res.render('item', data);
         }

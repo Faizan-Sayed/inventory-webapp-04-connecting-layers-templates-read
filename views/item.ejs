@@ -12,7 +12,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-    <link rel="stylesheet" href="/stylesheets/stuffStyle.css">
+    <style>
+        form {
+            border: solid 2px lightgrey;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        form:focus-within {
+            border-color: orange;
+        }
+
+        tr:hover {
+            background-color: #F0F0F0;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,25 +34,34 @@
     <!-- Actual page content! -->
     <div class="container">
         <div class="section flow-text" id="stuffDetail">
-            <h1>Stuff details:</h1>
+            <h1>Item details:</h1>
             <a class="btn-small waves-effect waves-light" href="/stuff">
-                <i class="material-icons left">arrow_back</i>Return to Inventory
+                <i class="material-icons left">arrow_back</i>Return to Shopping List
             </a>
             <table>
                 <tr>
                     <th>Item:</th>
-                    <td><%= item %></td>
+                    <td><%=item %></td>
                 </tr>
                 <tr>
                     <th>Quantity:</th>
-                    <td><%= quantity %></td>
-
+                    <td><%=quantity%></td>
+                </tr>
+                <tr>
+                    <th>Price: ($)</th>
+                    <td><%=price%></td>
+                </tr>
+                <tr>
+                    <th>Weight: (lbs)</th>
+                    <td><%=Weight%></td>
+                </tr>
+                <tr>
+                    <th>Brand:</th>
+                    <td><%=Brand%></td>
                 </tr>
                 <tr>
                     <th>Description:</th>
-                    <td>
-                        <%= description %>
-                    </td>
+                    <td><%=description%></td>
                 </tr>
             </table>
         </div>
@@ -70,11 +93,21 @@
                             <label for="quantityInput">Item Quantity:</label>
                             <input type="number" name="quantity" id="quantityInput" value=1 required>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label for="descriptionInput">Item Description:</label>
-                            <input type="text" name="description" id="descriptionInput" data-length="100">
+                        <div class="input-field col s6">
+                            <label for="quantityInput">Item Price: ($)</label>
+                            <input type="number" name="quantity" id="quantityInput" value=1 required>
+                        </div>
+                        <div class="input-field col s6">
+                            <label for="quantityInput">Item Weight:</label>
+                            <input type="number" name="quantity" id="quantityInput" value=1 required>
+                        </div>
+                        <div class="input-field col s6">
+                            <label for="nameInput">Brand Name:</label>
+                            <input type="text" name="name" id="nameInput" class="validate" data-length="32" required>
+                        </div>
+                        <div class="input-field col s6">
+                            <label for="nameInput">Item Description:</label>
+                            <input type="text" name="name" id="nameInput" class="validate" data-length="32" required>
                         </div>
                     </div>
                     <div class="modal-footer">
